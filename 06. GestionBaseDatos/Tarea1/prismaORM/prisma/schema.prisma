@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Ejemplo para crear un esquema en la base de datos
+model country {
+  country_id Int @id @default(autoincrement())
+  country String
+  last_update DateTime
+}
+// Una vez hecho esto se realiza desde consola: > npx prisma migrate dev --name init
+// Esto crea una carpeta migrations y un archivo migrations.sql con las tablas que creamos.
